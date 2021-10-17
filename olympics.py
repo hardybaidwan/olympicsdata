@@ -6,7 +6,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import plotly.figure_factory as ff
 
-df = pd.read_csv('https://www.kaggle.com/heesoo37/120-years-of-olympic-history-athletes-and-results/athlete_events.csv')
+df = pd.concat(
+    map(pd.read_csv, ['athlete_events.csv', 'athlete_events1.csv']), ignore_index=True)
 region_df = pd.read_csv('noc_regions.csv')
 
 df = preprocessor.preprocess(df,region_df)
